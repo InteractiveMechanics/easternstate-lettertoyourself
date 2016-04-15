@@ -1,0 +1,409 @@
+body {
+	background: #3C4553;
+	margin: 0px;
+	font-family: helvetica;
+}
+
+body * {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.wrapper {
+	max-width: 1024px;
+	max-height: 768px;
+}
+
+.home-icon {
+	position: absolute;
+	top:10;
+	left: 10;
+}
+
+.bg-paper {
+	margin: 50px auto 0;
+  	position: relative;
+  	width: 85%;
+}
+.paper {
+	background: #F0E0D6;
+  	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  	padding: 24px;
+  	position: absolute;
+  	width: 93%;
+  	height: 580px;
+}
+
+.main-paper {
+	background-image: url('../assets/postcard-border@2x.png'); 
+  	background-size: 859px 628px; 
+}
+
+.white-paper {
+	background: white;
+	box-shadow: 0 5px 25px rgba(0,0,0,0.35); 
+	transform: rotate(50deg)
+}
+
+.bg-paper:before, .bg-paper:after {
+  	content: "";
+  	min-height: 97%;
+  	position: absolute;
+  	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  	width: 100%;
+  	background: #fff;
+  	height: 630px;
+  	z-index: -1;
+}
+.bg-paper:before {
+  	background: #CABDB6;
+  	box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  	left: -5px;
+  	top: 4px;
+  	transform: rotate(-2.5deg);
+}
+.bg-paper:after {
+  	background: #CABDB6;
+  	box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  	right: -3px;
+  	top: 1px;
+  	transform: rotate(1.4deg);
+}
+
+.before-removal:before {
+	background: none !important;
+  	box-shadow: none !important;
+}
+
+.after-removal:after {
+	background: none !important;
+  	box-shadow: none !important;
+}
+
+.right {
+	float:right;
+}
+
+.left {
+	float:left;
+}
+
+.clear {
+	clear: both;
+}
+
+a {
+	padding: 6px 12px;
+	font-size: 17px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	font-weight: bold;
+	color:black;
+	text-decoration: none;
+	text-align: center;
+}
+
+input:focus {outline:0;}
+
+
+
+.btn-outline {
+	border: 2px solid #237ebd;
+	background: transparent;
+	color:#237ebd;
+	border-radius: 50px;
+	padding:11px 15px
+}
+
+.btn-outline:hover {
+	border: 2px solid #237ebd;
+	background: #237ebd;
+	color:#fff;
+}
+
+.main-page {
+	padding: 40px;
+}
+
+.main-page .logos {
+	padding-bottom: 50px;
+}
+
+.main-page .main-title {
+	text-align: center;
+}
+
+.main-page h1.main-title{
+	margin: 15px 0 15px;
+	font-family: "American Typewriter";
+}
+
+.main-page p.intro-text {
+	width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+.main-page a.getting-started {
+	width: 250px;
+	padding: 20px 0;
+	margin: 40px auto;
+	display: block;
+	font-size: 20px;
+}
+
+.todo  {
+	width: 85%;
+	margin: 0 auto;	
+}
+
+.todo .page-title {
+	text-align: center;
+}
+
+.todo .page-title h1 {
+	margin-top:20px;
+	font-family: "American Typewriter";
+}
+
+.todo .input-area .newsletter-checkbox {
+	width: 490px;
+	height:25px;
+}
+
+.todo .input-area textarea {
+	width: 100%;
+	height: 40%;
+	background: #f4ece4;
+	border:1px solid transparent;
+	border-radius: 15px;
+	padding: 30px;
+	font-size: 20px;
+	color:#353535;
+	border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.todo .input-area textarea.missing-text {
+	box-shadow: 0 0 2px #CC0000
+}
+
+.todo .input-area input[type="text"], input[type="email"] {
+	display: block;
+    width: 100%;
+    height: 60px;
+    padding: 0 15px;
+    font-size: 16px;
+    background-color: #f4ece4;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.todo .input-area p {
+	margin:10px 0 0;
+	font-size: 15px;
+	color:#bbb;
+	font-style: italic;
+	line-height: 20px;
+}
+
+.todo .form-item {
+	margin-bottom: 35px;
+}
+
+.todo .navigation {
+	width: 80%;
+    position: absolute;
+    bottom: 50px;
+}
+
+.todo .navigation a {
+	border-radius: 50px;
+}
+
+.dots {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 40px;
+    right: 0px;
+    left: 465px;
+    display: none;
+}
+
+.dots ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.dots ul li {
+	list-style: none;
+	display: inline;
+}
+
+
+.todo .navigation  a.btn {
+	display: block;
+}
+
+.todo .navigation  a.back-button {
+	display: block;
+    width: 20px;
+    height: 20px;
+    padding:  10px 12px 12px 12px;
+}
+
+h1 {
+	font-size: 32px;
+	margin: 50px 0 30px;
+	font-weight: 500;
+}
+
+p {
+	line-height: 35px;
+}
+
+.hidden {
+	display: none;
+}
+
+label {
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+
+.circle {
+	width: 12px;
+    height: 12px;
+    background: ;
+    border-radius: 50px;
+    background: rgba(255,255,255,.35);
+    display: inline-block;
+}
+
+.active .circle {
+	background: rgba(255,255,255,1);
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+	width: 1024px;
+	height: 768px; 
+}
+
+
+.modal .home-modal {
+	width: 400px;
+    /* margin: 150px auto 0; */
+    background: white;
+    padding: 25px 25px 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+}
+
+.modal .home-modal p {
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.modal:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modal .close {
+	float: right;
+	margin-right: -40px;
+	margin-top: -40px;
+	background: white;
+	border-radius: 100px;
+	box-shadow: 0 0 7px rgba(0,0,0,0.6);
+	padding: 6px;
+}
+
+.modal .close a {
+	padding: 0;
+}
+
+.modal .close a img {
+	width: 12px;
+    padding: 7px;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+
+.rotate-card {
+	transform: rotate(-2deg) !important;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.checkbox {
+	width: 430px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+    padding-top: 7px;
+    font-size: 15px;
+    color: #444;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.span-checkbox {
+	 height: 40px;
+    font-size: 18px;
+    width: 550px;
+}
+
+span.unselected {
+	background: url("../assets/icon-checkbox-unchecked.svg");
+    background-size: 27px 32px;
+    background-repeat: no-repeat;
+    /* content: ""; */
+}
+
+span.selected {
+	background: url("../assets/icon-checkbox-checked.svg");
+    background-size: 27px 32px;
+    background-repeat: no-repeat;
+    /* content: ""; */
+}

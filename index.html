@@ -1,0 +1,958 @@
+<html>
+<head>
+	<title>ESP Project 1</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/animate.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	
+	<style type="text/css" media="screen">
+		.paper .post-cards ul {
+			margin: 0px;
+			width: 100%;
+			margin: 0 auto;
+		}
+		
+		.paper .post-cards ul li {
+			display: inline-block;
+		    margin-left: 8px;
+		    margin-bottom: 13px;
+		    border: 6px solid #fff;
+			cursor: pointer;
+			box-shadow: 0 0 4px rgba(0,0,0,0.3)
+		}
+		
+		.paper .post-cards ul li.rotate-right {
+		    transform: rotate(-1deg);
+		}
+		
+		.paper .post-cards ul li.rotate-left {
+		    transform: rotate(1deg);
+		}
+		
+		.paper .post-cards ul li img {
+			width: 180px;
+		}
+		
+		.paper .post-cards ul li .overlay-check {
+			display: none;
+			background: rgba(65,105,225,.7); 
+			position: absolute; 
+			top:0; 
+			left: 0; 
+			width: 100%; 
+			height: 100%;
+		}
+		
+		.paper .post-cards ul li .overlay-check div {
+			position: absolute; 
+			top: 50%; 
+			left: 50%; 
+			transform: translateX(-50%) translateY(-50%);
+		}
+		
+		.paper .post-cards ul li .overlay-check div img{
+			width: 24px;
+		}
+		
+		.paper .post-cards ul li.selected .overlay-check {
+			display: block;
+		}
+
+        .paper .post-cards ul li.disabled {
+            opacity: 0.5;
+        }
+		
+		.faded {
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="wrapper">
+
+		<div class="landscape">
+			<div class="home-icon">
+				<a href="javascript: void(0);" id="modal-link" class="faded" data-linkto="index.html" style="padding:0px;">
+					<img src="assets/icon-home.svg" width="32" />
+				</a>
+			</div>
+
+			<div class="dots">
+				<ul>
+					<li class="active">
+						<div class="circle">
+						</div>
+					</li>
+					<li>
+						<div class="circle">
+						</div>
+					</li>
+					<li>
+						<div class="circle">
+						</div>
+					</li>
+					<li>
+						<div class="circle">
+						</div>
+					</li>
+                    <li>
+						<div class="circle">
+						</div>
+					</li>
+                    <li>
+						<div class="circle">
+						</div>
+					</li>
+                    <li>
+						<div class="circle">
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="bg-paper">
+				
+				<div class="paper main-paper" id="StartPage" style="z-index: 10;">
+				
+					<section class="main-page">
+						<section class="logos">
+							
+							<div class="left">
+								<img src="assets/prisons-today-logo@2x.png" width="225px" style="opacity: .4;" />
+							</div>
+	
+							<br class="clear" />
+						</section>
+	
+						<h1 class="main-title" style="font-size:34px;">Postcards to My Future Self</h1>
+	
+						<p class="intro-text">
+							Send yourself three short email postcards about your experience today. <br />
+							<strong>Your postcards will arrive in 2 months, 1 year, and 3 years.</strong>  <br /> We will never send other emails <br /> (unless you want them) or share your email address.
+						</p>
+	
+						<a class="btn btn-outline getting-started" href="javascript: void(0);">
+							Let's get started
+						</a>
+					</section>
+				
+				</div>
+				
+				<div class="paper" id="PickPostcardPage" style="z-index: 9;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								Choose three postcards
+							</h1>
+						</div>
+						
+						<div class="post-cards">
+							<ul>
+								<li class="rotate-right" data-postcardid="1">
+									<img src="assets/postcards/thumbs/1.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-left" data-postcardid="2">
+									<img src="assets/postcards/thumbs/2.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-right" data-postcardid="3">
+									<img src="assets/postcards/thumbs/3.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-left" data-postcardid="4">
+									<img src="assets/postcards/thumbs/4.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-right" data-postcardid="5">
+									<img src="assets/postcards/thumbs/5.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-left" data-postcardid="6">
+									<img src="assets/postcards/thumbs/6.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+                                
+                                <li class="rotate-right" data-postcardid="7">
+									<img src="assets/postcards/thumbs/7.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+								
+								<li class="rotate-left" data-postcardid="8">
+									<img src="assets/postcards/thumbs/8.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+
+                                <li class="rotate-right" data-postcardid="9">
+									<img src="assets/postcards/thumbs/9.jpg" />
+									<div class="overlay-check">
+										<div>
+											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="navigation">
+	
+							<!--<div class="back-button left">
+								<a class="btn btn-outline back back-button" href="javascript: void(0);" onclick="homepageRedirect();">
+									&#8592;
+								</a>
+							</div>-->
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button" data-divid="PickPostcardPage" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+						</div>
+						
+					</section>
+				
+				</div>
+				
+				<div class="paper" id="MessagePage" style="z-index: 8;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								What did this exhibit make you <br /> think or feel?
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<textarea maxlength="500"></textarea>
+							
+							<p class="text-center count" style="color:red;">500 characters remaining.</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back back-button" data-divid="PickPostcardPage" href="javascript: void(0);">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="MessagePage" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+						</div>
+					</section>
+				
+				</div>
+				
+				<div class="paper" id="Message2Page" style="z-index: 7;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								Who do you think you'll talk to about your experience today? What will you say? <br /> Why did you choose this person?
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<textarea maxlength="500"></textarea>
+							
+							<p class="text-center count" style="color:red;">500 characters remaining.</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back back-button" data-divid="MessagePage" href="javascript: void(0);">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="Message2Page" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+						</div>
+					</section>
+				
+				</div>
+				
+				<div class="paper" id="Message3Page" style="z-index: 6;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								How do you hope the American <br />criminal justice system will  change <br />in the next three years?
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<textarea maxlength="500"></textarea>
+							
+							<p class="text-center count" style="color:red;">500 characters remaining.</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back back-button" data-divid="Message2Page" href="javascript: void(0);">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="Message3Page" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+							
+	
+						</div>
+					</section>
+				
+				</div>
+				
+				<div class="paper" id="OptionsPage" style="z-index: 5;">
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								This exhibit sparked my interest in:
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">The goals of prisons / alternatives to prison</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Policing and public safety</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">The changing demographics of our prison population</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">The history of corrections</span>
+								</div>
+							</div>
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Recent developments in criminal justice</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Opportunities to create change in the criminal justice system</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Opportunities to help those impacted by it</span>
+								</div>
+							</div>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back-button" data-divid="Message3Page">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded done-link next-button" data-divid="OptionsPage" href="javascript:void(0);" >
+									Next &#8594;
+								</a>
+								<a href="#done-modal" class="hidden" id="complete-link"></a>
+							</div>
+	
+						</div>
+					</section>
+				</div>
+				
+				<div class="paper" id="Options2Page" style="z-index: 4;">
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								In the next three years, I plan to:
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox  unselected">Vote More</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Advocate More</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Volunteer More</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Donate More</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Learn More</span>
+								</div>
+							</div>
+							
+							<div class="form-control">
+								<div class="form-item" style="margin: 5px 15px;">
+									<span class="checkbox span-checkbox unselected">Listen More</span>
+								</div>
+							</div>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back-button" data-divid="OptionsPage">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded done-link next-button" data-divid="Options2Page" href="javascript:void(0);" >
+									Next &#8594;
+								</a>
+								<a href="#done-modal" class="hidden" id="complete-link"></a>
+							</div>
+	
+							
+						</div>
+					</section>
+				</div>
+				
+				
+				<div class="paper" id="CompletePage" style="z-index: 3;">
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								Ready to send your postcards?
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<div class="form-control">
+	
+								<div class="form-item">
+									<label for="firstname" style="margin-bottom:10px; display:block;">First name *</label>
+									<input type="text" name="firstname" id="firstname" autocomplete="off">
+									<label class="error-first-name" for="firstname" style="color:red;font-size: 11px; margin-top: 10px; display: none;">Please add your first name.</label>
+								</div>
+	
+								<div class="form-item">
+									<label for="email" style="margin-bottom:10px; display:block;">Email address *</label>
+									<input type="email" name="email" id="email" autocomplete="off">
+									<label class="error-email"  for="firstname" style="color:red;font-size: 11px;display:block;margin-top: 10px; display: none;">Invalid email address.</label>
+								</div>
+	
+								<div class="form-item" style="width:530px; margin: 0 auto;">
+									<span class="checkbox newsletter-checkbox unselected">I'd like to receive the monthly Eastern State Penitentiary newsletter</span>
+								</div>
+								
+							</div>
+	
+							<p style="margin-bottom: 50px; width: 90%; margin: 20px auto 30px; line-height: 25px; color: #999; font-style: normal; font-size: 12px;" class="text-center">
+								Sign me up for Eastern State Penitentiary's monthly newsletter. <br /> (We will not share your contact information with anyone else.)
+							</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back-button" data-divid="Options2Page">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded done-link next-button" data-divid="CompletePage" href="javascript:void(0);" >
+									Done &#8594;
+								</a>
+								<a href="#done-modal" class="hidden" id="complete-link"></a>
+							</div>
+	
+							
+						</div>
+					</section>
+				</div>
+				
+				<div class="hidden" id="PostcardPage" style="z-index: 2;">
+					<section style="transform: rotate(-5deg)">
+						<img src="assets/postcards/postcard_small_01@2x.png" width="100%" height="85%" />
+						
+						<div id="postage-stamp" style="position: absolute; top: 25; right: 25;" class="hidden">
+							<img src="assets/postcard-stamp@2x.png" width="200" />
+						</div>
+					</section>
+				</div>
+				
+			</div>
+		</div>
+		
+
+		<div id="open-modal" class="modal">
+			<div>
+				<div class="home-modal">
+					<div class="close">
+						<a href="#close">
+							<img src="http://interactivemechanics.com/Holiday2015/images/button-close.svg" />
+						</a>
+					</div>
+					
+					<div style="text-align:center">
+						<h2>
+							Return to the beginning 
+						</h2>
+
+						<p>
+							Are you sure you want to go back to the beginning? All progress will be lost.
+						</p>
+
+						<a class="btn btn-outline" href="index.html" style="display: inline-block; padding: 16px 28px; font-size: 16px;  margin-top: 10px;">
+							Back to home
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="done-modal" class="modal">
+			<div>
+				<div class="home-modal">
+					<!--<div class="close">
+						<a href="#close">
+							<img src="http://interactivemechanics.com/Holiday2015/images/button-close.svg" />
+						</a>
+					</div>-->
+					<div style="text-align:center">
+						<h2>
+							Your postcards are saved and ready to send!
+						</h2>
+
+						<p>
+							Your first postcard will arrive on <span id="first-date">July 12, 2016</span>. <br /> Your second postcard will arrive on <span id="second-date">May 12, 2017</span>. <br /> Your third postcard will arrive on <span id="third-date">May 12, 2019</span>.
+						</p>
+
+						<a class="btn btn-outline" href="./index.html" style="display: inline-block; padding: 16px 28px; font-size: 16px;  margin-top: 10px;">
+							Back to home
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script>
+		var dotIndex = 0;
+		function validateEmail(email) {
+		    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		    return re.test(email);
+		}
+		
+		function validateInputs(divid) {
+			if(divid == "PickPostcardPage") {
+				var selected = $('ul li.selected');
+				console.log(selected);
+				return selected.length == 3;
+			}
+			
+			if(divid == 'MessagePage') {
+				console.log('focus');
+				
+				var go_forth = $('#MessagePage textarea').val().length > 0;
+				if(!go_forth) {
+					$('#MessagePage textarea').addClass('missing-text');				
+				}
+				
+				return go_forth;
+			}
+
+			if(divid == 'Message2Page') {
+				console.log('focus');
+				
+				var go_forth = $('#Message2Page textarea').val().length > 0;
+				if(!go_forth) {
+					$('#Message2Page textarea').addClass('missing-text');				
+				}
+				
+				return go_forth;
+			}
+
+			if(divid == 'Message3Page') {
+				console.log('focus');
+				
+				var go_forth = $('#Message3Page textarea').val().length > 0;
+				if(!go_forth) {
+					$('#Message3Page textarea').addClass('missing-text');				
+				}
+				
+				return go_forth;
+			}
+			
+			if(divid == "CompletePage") {
+				var email_boolean = validateEmail($('#email').val());
+				
+				if(!email_boolean) {
+					$('.error-email').css("display","block");
+				} else {
+					$('.error-email').css("display","none");
+
+				}
+				
+				var first_boolean = $('#firstname').val().length > 0;
+				
+				if(!first_boolean) {
+					$('.error-first-name').css("display","block");
+				} else {
+					$('.error-first-name').css("display","none");
+				}
+				
+				return email_boolean && first_boolean;
+			}
+			return true;
+		}
+		$(document).ready(function(){
+			$("#MessagePage textarea").keyup(function(){
+				var count = $(this).val().length;
+				$("#MessagePage .count").text((500 - count) + " characters remaining");
+				
+				if(count > 0) {
+					if($("#MessagePage .next-button a").hasClass('faded')) {
+						$("#MessagePage .next-button a").removeClass('faded');
+						$('#MessagePage textarea').removeClass('missing-text');	
+					}
+				}
+				
+				if(count == 0) {
+					if(!$("#MessagePage .next-button a").hasClass('faded')) {
+						$("#MessagePage .next-button a").addClass('faded');
+						$('#MessagePage textarea').addClass('missing-text');
+					}
+				}
+			});
+
+			$("#Message2Page textarea").keyup(function(){
+				var count = $(this).val().length;
+				$("#Message2Page .count").text((500 - count) + " characters remaining");
+				
+				if(count > 0) {
+					if($("#Message2Page .next-button a").hasClass('faded')) {
+						$("#Message2Page .next-button a").removeClass('faded');
+						$('#Message2Page textarea').removeClass('missing-text');
+					}
+				}
+				
+				if(count == 0) {
+					if(!$("#Message2Page .next-button a").hasClass('faded')) {
+						$("#Message2Page .next-button a").addClass('faded');
+						$('#Message2Page textarea').addClass('missing-text');
+					}
+				}
+			});
+
+			$("#Message3Page textarea").keyup(function(){
+				var count = $(this).val().length;
+				$("#Message3Page .count").text((500 - count) + " characters remaining");
+				
+				if(count > 0) {
+					if($("#Message3Page .next-button a").hasClass('faded')) {
+						$("#Message3Page .next-button a").removeClass('faded');
+						$('#Message3Page textarea').removeClass('missing-text');
+					}
+				}
+				
+				if(count == 0) {
+					if(!$("#Message3Page .next-button a").hasClass('faded')) {
+						$("#Message3Page .next-button a").addClass('faded');
+						$('#Message3Page textarea').addClass('missing-text');
+					}
+				}
+			});
+
+            setSendDates()
+
+			$('.getting-started').click(function(){
+				$('#modal-link').removeClass('faded');
+				$("a#modal-link").attr("href", "#open-modal")
+				$('#StartPage').addClass('animated bounceOutLeft');
+				
+				$('.dots').fadeIn(1200);
+			});
+			
+			$('.back-button').click(function(){
+				var divid = $(this).data('divid');
+				$('#' + divid).removeClass('animated bounceOutLeft');
+				$('#' + divid).addClass('animated bounceInLeft');
+				
+				if(divid == 'Options2Page') {
+					$('.bg-paper').removeClass('before-removal');
+					$('.bg-paper').removeClass('after-removal');
+				}
+
+				if(divid == 'MessagePage') {
+					console.log('focus');
+					$('#MessagePage textarea').focus();
+				}
+
+				if(divid == 'Message2Page') {
+					console.log('focus');
+					$('#Message2Page textarea').focus();
+				}
+
+				if(divid == 'Message3Page') {
+					console.log('focus');
+					$('#Message3Page textarea').focus();
+				}
+			});
+			
+			$('.next-button').click(function(){
+				var divid = $(this).data('divid');
+				
+				if(validateInputs(divid)) {
+					$('#' + divid).addClass('animated bounceOutLeft');
+					
+					if(divid == 'Options2Page') {
+						$('.bg-paper').addClass('before-removal');
+						$('.bg-paper').addClass('after-removal');
+					}
+	
+					if(divid == 'PickPostcardPage') {
+						$('#MessagePage textarea').focus();
+					}
+	
+					if(divid == 'MessagePage') {
+						$('#Message2Page textarea').focus();
+					}
+	
+					if(divid == 'Message2Page') {
+						$('#Message3Page textarea').focus();
+					}
+					
+					if(divid == 'CompletePage') {
+						
+						
+						$('.dots').hide();
+						$('.error-email').css("display","none");
+						$('.error-first-name').css("display","none");
+					
+						$('#CompletePage').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+							$('#PostcardPage').addClass('animated slideInDown show rotate-card');
+							$('#PostcardPage').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+								$('#postage-stamp').addClass('animated fadeInDown show rotate-card');
+								
+								setTimeout(function(){
+									document.getElementById('complete-link').click();
+									$("a#modal-link").attr("href", "#close")
+								}, 2500);
+							});
+						});
+						
+						postData();
+					}
+					
+				}
+			});
+			
+			$('.post-cards ul li').click(function() {
+				
+                if ($(this).closest('li').hasClass('selected')){
+                    $(this).closest('li').removeClass('selected');
+                } else {
+                    var selected = $('ul li.selected');
+                    if (selected.length < 3) {
+                        $(this).closest('li').addClass('selected');
+                    }
+                }
+                
+                var selected = $('ul li.selected');
+                /*if(selected.length == 3) {
+                    $('#PickPostcardPage .next-button').show();
+                } else {
+                 	$('#PickPostcardPage .next-button').hide();   
+                }*/
+			});
+			
+			$('.checkbox').click(function(){
+				if($(this).hasClass('unselected')) {
+					$(this).removeClass('unselected');
+					$(this).addClass('selected');
+				} else {
+					$(this).removeClass('selected');
+					$(this).addClass('unselected');
+				}
+			});
+		});
+		
+		function postData() {
+			var postcards = $('.post-cards ul li.selected');
+			var objRequest = {
+			    'postcardid_1': postcards[0].dataset.postcardid,
+			    'postcardid_2': postcards[1].dataset.postcardid,
+			    'postcardid_3': postcards[2].dataset.postcardid,
+			    'textarea_1': $("#MessagePage textarea").val(),
+			    'textarea_2': $("#Message2Page textarea").val(),
+			    'textarea_3': $("#Message3Page textarea").val(),
+			    'checkbox_1': checkboxToString('#OptionsPage .input-area span'),
+			    'checkbox_2': checkboxToString('#Options2Page .input-area span'),
+			    'firstname': $('#firstname').val(),
+			    'email': $('#email').val()
+		    }
+		    
+		    var request = $.ajax({
+			  url: "./data/api/post-data.php",
+			  type: "POST",
+			  data: objRequest,
+			  dataType: "html"
+			});
+			
+			request.done(function(msg) {
+			  //console.log(msg);
+			});
+			
+			request.fail(function(jqXHR, textStatus) {
+				
+			});
+		}
+		
+		function checkboxToString(path) {
+			var items = $(path)
+			var str = '';
+			
+			for(var i = 0; i < items.length; i++) {
+				var item = items[i];
+				console.log(item.className);
+				if(item.className.indexOf("unselected") > -1) {
+					str += '-1,';
+				} else {
+					str += '1,';
+				}
+			}
+			
+			str = str.replace(/,\s*$/, "");
+			return str;
+		}
+		
+        function setSendDates(){
+            var monthname = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var d = new Date();
+
+            $('#first-date').text(monthname[d.getMonth() + 2] + ' ' + d.getDate() + ', ' + d.getFullYear());
+            $('#second-date').text(monthname[d.getMonth()] + ' ' + d.getDate() + ', ' + (d.getFullYear() + 1));
+            $('#third-date').text(monthname[d.getMonth()] + ' ' + d.getDate() + ', ' + (d.getFullYear() + 3));
+        }
+		
+		/*function postData() {
+			var objRequest = {
+			    'postcardid_1': 2,
+			    'postcardid_2': 3,
+			    'postcardid_3': 4,
+			    'textarea_1': $("#MessagePage textarea").val(),
+			    'textarea_2': $("#Message2Page textarea").val(),
+			    'textarea_3': $("#Message3Page textarea").val(),
+			    'checkbox_1': '12345',
+			    'checkbox_2': '12345',
+			    'firstname': $('#firstname').val(),
+			    'email': $('#email').val()
+		    }
+		    
+		    var request = $.ajax({
+			  url: "./data/calls/post-data.php",
+			  type: "POST",
+			  data: objRequest,
+			  dataType: "html"
+			});
+			
+			request.done(function(msg) {
+			  console.log(msg);
+			});
+			
+			request.fail(function(jqXHR, textStatus) {
+				
+			});
+		}*/
+	</script>
+</body>
+</html>
