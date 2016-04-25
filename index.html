@@ -600,8 +600,8 @@
 				</div>
 				
 				<div class="hidden" id="PostcardPage" style="z-index: 2;">
-					<section style="transform: rotate(-5deg)">
-						<img src="assets/postcards/large/1.jpg" width="100%" height="85%" />
+					<section style="transform: rotate(-5deg);border: 12px white solid; box-shadow: 0 0 15px rgba(0,0,0,0.35);">
+						<img src="assets/postcards/large/1.jpg" class="postcard-image" width="100%" height="83%" />
 						
 						<div id="postage-stamp" style="position: absolute; top: 25; right: 25;" class="hidden">
 							<img src="assets/postcard-stamp@2x.png" width="200" />
@@ -886,7 +886,8 @@
 					}
 					
 					if(divid == 'CompletePage') {
-						
+						var postcards = $('.post-cards ul li.selected');
+                        $('#postcardPage .postcard-image').attr('src', 'assets/postcards/large/' + postcards[0].dataset.postcardid + '.jpg');
 						
 						$('.dots').hide();
 						$('.error-email').css("display","none");
