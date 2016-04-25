@@ -145,9 +145,11 @@ $(document).ready(function(){
         if ($(this).closest('li').hasClass('selected')){
             $(this).closest('li').removeClass('selected');
         } else {
-            var selected = $('ul li.selected');
+            var selected = $('.post-cards ul li.selected');
             if (selected.length < 3) {
                 $(this).closest('li').addClass('selected');
+            } else {
+                $(this).closest('.next').removeClass('faded');
             }
         }
 	});

@@ -2,7 +2,7 @@
 <head>
 	<title>ESP Project 1</title>
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/animate.css">
@@ -37,13 +37,15 @@
 		}
 		
 		.paper .post-cards ul li .overlay-check {
-			display: none;
+			display: block;
 			background: rgba(65,105,225,.7); 
 			position: absolute; 
 			top:0; 
 			left: 0; 
 			width: 100%; 
 			height: 100%;
+            opacity: 0;
+            transition: 0.5s all;
 		}
 		
 		.paper .post-cards ul li .overlay-check div {
@@ -51,6 +53,7 @@
 			top: 50%; 
 			left: 50%; 
 			transform: translateX(-50%) translateY(-50%);
+            transition: 0.5s all;
 		}
 		
 		.paper .post-cards ul li .overlay-check div img{
@@ -58,7 +61,7 @@
 		}
 		
 		.paper .post-cards ul li.selected .overlay-check {
-			display: block;
+			opacity: 1;
 		}
 
         .paper .post-cards ul li.disabled {
@@ -68,6 +71,45 @@
 		.faded {
 			opacity: .5;
 		}
+
+        #modal-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1024px;
+            height: 768px;
+            background-color: black;
+            opacity: .50;
+            -webkit-opacity: .5;
+            -moz-opacity: .5;
+            filter: alpha(opacity=50);
+            z-index: 1000;
+        }
+        
+        #modal-content {
+        	padding: 50px;
+            position: absolute;
+            width: 320px;
+            z-index: 1000;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 0 auto;
+            height: 120px;
+            z-index: 1000;
+            display: none;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color:#454545;
+            text-align: center;
+        }
+        
+        #modal-background.active, #modal-content.active {
+            display: block;
+        }
 	</style>
 </head>
 <body>
@@ -246,7 +288,7 @@
 							</div>-->
 	
 							<div class="next-button right">
-								<a class="btn btn-outline next rounded next-button" data-divid="PickPostcardPage" href="javascript:void(0)">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="PickPostcardPage" href="javascript:void(0)">
 									Next &#8594;
 								</a>
 							</div>
@@ -263,7 +305,7 @@
 
 						<div class="page-title">
 							<h1>
-								What did this exhibit make you <br /> think or feel?
+								What did this exhibit make you <br /><b>think or feel</b>?
 							</h1>
 						</div>
 	
@@ -291,80 +333,8 @@
 					</section>
 				
 				</div>
-				
-				<div class="paper" id="Message2Page" style="z-index: 7;">
-				
-					<section class="todo">
 
-						<div class="page-title">
-							<h1>
-								Who do you think you'll talk to about your experience today? What will you say? <br /> Why did you choose this person?
-							</h1>
-						</div>
-	
-						<div class="input-area">
-							<textarea maxlength="500"></textarea>
-							
-							<p class="text-center count" style="color:red;">500 characters remaining.</p>
-						</div>
-	
-						<div class="navigation">
-	
-							<div class="back-button left">
-								<a class="btn btn-outline back back-button" data-divid="MessagePage" href="javascript: void(0);">
-									&#8592;
-								</a>
-							</div>
-	
-							<div class="next-button right">
-								<a class="btn btn-outline next rounded next-button faded" data-divid="Message2Page" href="javascript:void(0)">
-									Next &#8594;
-								</a>
-							</div>
-	
-						</div>
-					</section>
-				
-				</div>
-				
-				<div class="paper" id="Message3Page" style="z-index: 6;">
-				
-					<section class="todo">
-
-						<div class="page-title">
-							<h1>
-								How do you hope the American <br />criminal justice system will  change <br />in the next three years?
-							</h1>
-						</div>
-	
-						<div class="input-area">
-							<textarea maxlength="500"></textarea>
-							
-							<p class="text-center count" style="color:red;">500 characters remaining.</p>
-						</div>
-	
-						<div class="navigation">
-	
-							<div class="back-button left">
-								<a class="btn btn-outline back back-button" data-divid="Message2Page" href="javascript: void(0);">
-									&#8592;
-								</a>
-							</div>
-	
-							<div class="next-button right">
-								<a class="btn btn-outline next rounded next-button faded" data-divid="Message3Page" href="javascript:void(0)">
-									Next &#8594;
-								</a>
-							</div>
-	
-							
-	
-						</div>
-					</section>
-				
-				</div>
-				
-				<div class="paper" id="OptionsPage" style="z-index: 5;">
+                <div class="paper" id="OptionsPage" style="z-index: 7;">
 					<section class="todo">
 
 						<div class="page-title">
@@ -419,7 +389,7 @@
 						<div class="navigation">
 	
 							<div class="back-button left">
-								<a class="btn btn-outline back-button" data-divid="Message3Page">
+								<a class="btn btn-outline back back-button" data-divid="MessagePage">
 									&#8592;
 								</a>
 							</div>
@@ -435,7 +405,42 @@
 					</section>
 				</div>
 				
-				<div class="paper" id="Options2Page" style="z-index: 4;">
+				<div class="paper" id="Message2Page" style="z-index: 6;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								Who do you think you'll talk to about your experience today? What will you say? <br /><b>Why did you choose this person?</b>
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<textarea maxlength="500"></textarea>
+							
+							<p class="text-center count" style="color:red;">500 characters remaining.</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back back-button" data-divid="OptionsPage" href="javascript: void(0);">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="Message2Page" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+						</div>
+					</section>
+				
+				</div>
+
+                <div class="paper" id="Options2Page" style="z-index: 5;">
 					<section class="todo">
 
 						<div class="page-title">
@@ -485,7 +490,7 @@
 						<div class="navigation">
 	
 							<div class="back-button left">
-								<a class="btn btn-outline back-button" data-divid="OptionsPage">
+								<a class="btn btn-outline back back-button" data-divid="Message2Page">
 									&#8592;
 								</a>
 							</div>
@@ -502,6 +507,42 @@
 					</section>
 				</div>
 				
+				<div class="paper" id="Message3Page" style="z-index: 4;">
+				
+					<section class="todo">
+
+						<div class="page-title">
+							<h1>
+								How do you hope the American <br />criminal justice system <b>will change</b> <br />in the next three years?
+							</h1>
+						</div>
+	
+						<div class="input-area">
+							<textarea maxlength="500"></textarea>
+							
+							<p class="text-center count" style="color:red;">500 characters remaining.</p>
+						</div>
+	
+						<div class="navigation">
+	
+							<div class="back-button left">
+								<a class="btn btn-outline back back-button" data-divid="Options2Page" href="javascript: void(0);">
+									&#8592;
+								</a>
+							</div>
+	
+							<div class="next-button right">
+								<a class="btn btn-outline next rounded next-button faded" data-divid="Message3Page" href="javascript:void(0)">
+									Next &#8594;
+								</a>
+							</div>
+	
+							
+	
+						</div>
+					</section>
+				
+				</div>				
 				
 				<div class="paper" id="CompletePage" style="z-index: 3;">
 					<section class="todo">
@@ -528,20 +569,20 @@
 								</div>
 	
 								<div class="form-item" style="width:530px; margin: 0 auto;">
-									<span class="checkbox newsletter-checkbox unselected">I'd like to receive the monthly Eastern State Penitentiary newsletter</span>
+									<span class="checkbox newsletter-checkbox unselected">I'd like to receive the monthly Eastern State Penitentiary newsletter.</span>
 								</div>
 								
 							</div>
 	
-							<p style="margin-bottom: 50px; width: 90%; margin: 20px auto 30px; line-height: 25px; color: #999; font-style: normal; font-size: 12px;" class="text-center">
-								Sign me up for Eastern State Penitentiary's monthly newsletter. <br /> (We will not share your contact information with anyone else.)
+							<p style="margin-bottom: 50px; width: 90%; margin: 5px auto 30px; line-height: 25px; color: #999; font-style: normal;" class="text-center">
+								(We will not share your email address with anyone else.)
 							</p>
 						</div>
 	
 						<div class="navigation">
 	
 							<div class="back-button left">
-								<a class="btn btn-outline back-button" data-divid="Options2Page">
+								<a class="btn btn-outline back back-button" data-divid="Message3Page">
 									&#8592;
 								</a>
 							</div>
@@ -560,7 +601,7 @@
 				
 				<div class="hidden" id="PostcardPage" style="z-index: 2;">
 					<section style="transform: rotate(-5deg)">
-						<img src="assets/postcards/postcard_small_01@2x.png" width="100%" height="85%" />
+						<img src="assets/postcards/large/1.jpg" width="100%" height="85%" />
 						
 						<div id="postage-stamp" style="position: absolute; top: 25; right: 25;" class="hidden">
 							<img src="assets/postcard-stamp@2x.png" width="200" />
@@ -598,6 +639,13 @@
 			</div>
 		</div>
 		
+        <div id="modal-background"></div>
+		<div id="modal-content">
+			<h2 style="color:#454545;">Are you still there?</h2>
+			<p style="color:#454545; line-height: 24px;">
+				Need a little more time? If you'd like to keep going, tap anywhere on-screen!
+			</p>
+		</div>
 		<div id="done-modal" class="modal">
 			<div>
 				<div class="home-modal">
@@ -694,7 +742,30 @@
 			}
 			return true;
 		}
+        var ExitTimer;
+        function showDoneModal() {
+        	$("#modal-content, #modal-background").addClass("active");
+        	ExitTimer = setTimeout(function(){ window.location.href = window.location.pathname; }, 20000);
+        }
+
+        var timeout = [];
+        function resetTimeout () {
+            if (timeout) {
+                $.each(timeout, function(index, value){
+                    clearTimeout(value);
+                    timeout.splice(index, 1);
+                });
+            }
+            timeout.push(setTimeout(showDoneModal, 120000));
+        }
 		$(document).ready(function(){
+            $(document).on('click tap drag', resetTimeout);
+            $('#modal-background, #modal-content').click(function(){
+        		$("#modal-content, #modal-background").removeClass("active");
+        		clearTimeout(ExitTimer);
+        		idleTime = 0;
+        	});
+        
 			$("#MessagePage textarea").keyup(function(){
 				var count = $(this).val().length;
 				$("#MessagePage .count").text((500 - count) + " characters remaining");
@@ -762,8 +833,10 @@
 				$('.dots').fadeIn(1200);
 			});
 			
-			$('.back-button').click(function(){
+			$('.back').click(function(){
 				var divid = $(this).data('divid');
+                $('.dots li.active').removeClass('active').prev().addClass('active');
+
 				$('#' + divid).removeClass('animated bounceOutLeft');
 				$('#' + divid).addClass('animated bounceInLeft');
 				
@@ -788,11 +861,12 @@
 				}
 			});
 			
-			$('.next-button').click(function(){
+			$('.next').click(function(){
 				var divid = $(this).data('divid');
 				
 				if(validateInputs(divid)) {
 					$('#' + divid).addClass('animated bounceOutLeft');
+                    $('.dots li.active').removeClass('active').next().addClass('active');
 					
 					if(divid == 'Options2Page') {
 						$('.bg-paper').addClass('before-removal');
@@ -803,11 +877,11 @@
 						$('#MessagePage textarea').focus();
 					}
 	
-					if(divid == 'MessagePage') {
+					if(divid == 'OptionsPage') {
 						$('#Message2Page textarea').focus();
 					}
 	
-					if(divid == 'Message2Page') {
+					if(divid == 'Options2Page') {
 						$('#Message3Page textarea').focus();
 					}
 					
@@ -848,11 +922,11 @@
                 }
                 
                 var selected = $('ul li.selected');
-                /*if(selected.length == 3) {
-                    $('#PickPostcardPage .next-button').show();
+                if(selected.length == 3) {
+                    $('#PickPostcardPage .next').removeClass('faded');
                 } else {
-                 	$('#PickPostcardPage .next-button').hide();   
-                }*/
+                 	$('#PickPostcardPage .next').addClass('faded');   
+                }
 			});
 			
 			$('.checkbox').click(function(){
