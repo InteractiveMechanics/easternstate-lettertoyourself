@@ -200,7 +200,7 @@
 									<img src="assets/postcards/thumbs/1.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -209,7 +209,7 @@
 									<img src="assets/postcards/thumbs/2.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -218,7 +218,7 @@
 									<img src="assets/postcards/thumbs/3.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -227,7 +227,7 @@
 									<img src="assets/postcards/thumbs/4.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -236,7 +236,7 @@
 									<img src="assets/postcards/thumbs/5.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -245,7 +245,7 @@
 									<img src="assets/postcards/thumbs/6.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -254,7 +254,7 @@
 									<img src="assets/postcards/thumbs/7.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -263,7 +263,7 @@
 									<img src="assets/postcards/thumbs/8.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -272,7 +272,7 @@
 									<img src="assets/postcards/thumbs/9.jpg" />
 									<div class="overlay-check">
 										<div>
-											<img src="http://www.clker.com/cliparts/x/n/7/m/p/g/check-mark-in-white-md.png" />
+											<img src="assets/check-icon.png" />
 										</div>
 									</div>
 								</li>
@@ -618,7 +618,7 @@
 				<div class="home-modal">
 					<div class="close">
 						<a href="#close">
-							<img src="http://interactivemechanics.com/Holiday2015/images/button-close.svg" />
+							<img src="assets/icon-close.svg" />
 						</a>
 					</div>
 					
@@ -651,7 +651,7 @@
 				<div class="home-modal">
 					<!--<div class="close">
 						<a href="#close">
-							<img src="http://interactivemechanics.com/Holiday2015/images/button-close.svg" />
+							<img src="assets/icon-close.svg" />
 						</a>
 					</div>-->
 					<div style="text-align:center">
@@ -759,6 +759,7 @@
             timeout.push(setTimeout(showDoneModal, 120000));
         }
 		$(document).ready(function(){
+			//sendGAEvent('Home Screen');
             $(document).on('click tap drag', resetTimeout);
             $('#modal-background, #modal-content').click(function(){
         		$("#modal-content, #modal-background").removeClass("active");
@@ -867,6 +868,8 @@
 				if(validateInputs(divid)) {
 					$('#' + divid).addClass('animated bounceOutLeft');
                     $('.dots li.active').removeClass('active').next().addClass('active');
+                    //var screen = getScreenViewName(divid);
+                    //sendGAEvent(screen);
 					
 					if(divid == 'Options2Page') {
 						$('.bg-paper').addClass('before-removal');
@@ -998,6 +1001,49 @@
             $('#second-date').text(monthname[d.getMonth()] + ' ' + d.getDate() + ', ' + (d.getFullYear() + 1));
             $('#third-date').text(monthname[d.getMonth()] + ' ' + d.getDate() + ', ' + (d.getFullYear() + 3));
         }
+        
+        
+		function getScreenViewName(screen) {
+			
+			if(page == 'PickPostcardPage') {
+				return 'Pick A Postcard Screen';
+			}
+			
+			if(page == 'MessagePage') {
+				return 'Think Or Feel Message';
+			}
+			
+			if(page == 'OptionsPage') {
+				return 'Sparked Interest Options';
+			}
+			
+			if(page == 'Message2Page') {
+				return 'Who Will You Talk To?';
+			}
+			
+			if(page == 'Options2Page') {
+				return 'Next Three Years Options';
+			}
+			
+			if(page == 'Message3Page') {
+				return 'What Do You Think Will Change?';
+			}
+			
+			if(page == 'CompletePage') {
+				return 'Sign Up Form Screen';
+			}
+			
+			if(page == 'PostcardPage') {
+				return 'Complete Screen'
+			}	
+		}
+		
+		function sendGAEvent(screen) {
+			ga('send', 'screenview', {
+			  'appName': 'Postcards to My Future Self',
+			  'screenName': screen
+			});
+		}
 		
 		/*function postData() {
 			var objRequest = {
